@@ -16,6 +16,15 @@ const nextConfig: NextConfig = {
     ],
     minimumCacheTTL: 1 * 60 * 10, // 10 mins
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/dashboard',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

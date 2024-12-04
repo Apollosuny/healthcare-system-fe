@@ -10,7 +10,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       <div className='h-screen w-24'>
         <Sidebar />
       </div>
-      <div className='h-[200vh] ml-24 bg-[#f5f5fd]'>{children}</div>
+      <div className='h-[200vh] bg-[#f5f5fd] w-full'>{children}</div>
     </div>
   );
 };

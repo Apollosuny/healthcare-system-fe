@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-mainPurple: rgba(137, 112, 230, 1);
+  --color-lightPurple: rgb(160 141 235);
 }
 
 @media (prefers-color-scheme: dark) {

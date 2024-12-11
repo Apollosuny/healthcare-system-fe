@@ -1,3 +1,4 @@
+import Header from '../header';
 import Sidebar from '../sidebar';
 
 type Props = {
@@ -10,7 +11,10 @@ const Layout: React.FC<Props> = ({ children }) => {
       <div className='h-screen w-24'>
         <Sidebar />
       </div>
-      <div className='h-[200vh] bg-[#f5f5fd] w-full'>{children}</div>
+      <div className='bg-[#f5f5fd] w-full p-10'>
+        <Header />
+        {children}
+      </div>
     </div>
   );
 };

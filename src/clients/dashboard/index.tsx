@@ -14,7 +14,7 @@ const Dashboard: React.FC = () => {
       <div className='grid grid-cols-3 gap-20'>
         <div className='col-span-2'>
           <Indicators />
-          <div className='grid grid-cols-3 mt-4'>
+          <div className='grid grid-cols-3 mt-4 gap-4'>
             <div className='col-span-2'>
               <Activity />
             </div>
@@ -28,8 +28,26 @@ const Dashboard: React.FC = () => {
             mode='single'
             selected={selected}
             onSelect={setSelected}
-            className='!text-black'
+            className='!text-black max-w-xs sm:max-w-md lg:max-w-lg mx-auto'
+            classNames={{
+              root: 'flex flex-col items-center',
+              table: 'table-fixed',
+              day: 'rounded-full w-8 h-8 lg:w-12 lg:h-12',
+            }}
           />
+          <div className=''>
+            <div className='flex items-center justify-between'>
+              <p className='text-black font-medium text-base'>Doctor</p>
+              <p className='text-[#8875e2] text-sm'>See all</p>
+            </div>
+            <div className='flex items-center justify-center gap-3 rounded-xl bg-[#f6f6fe] p-2 mt-2'>
+              <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
+              <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
+              <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
+              <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
+              <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import Activity from '@/components/dashboard/activity';
 import Indicators from '@/components/dashboard/indicators';
+import RecommendationArticles from '@/components/dashboard/recommendation-articles';
 import Treatment from '@/components/dashboard/treatment';
 import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
@@ -22,6 +23,7 @@ const Dashboard: React.FC = () => {
               <Treatment />
             </div>
           </div>
+          <RecommendationArticles />
         </div>
         <div className='bg-white px-6 py-5 rounded-xl'>
           <DayPicker

@@ -3,6 +3,7 @@
 import Activity from '@/components/dashboard/activity';
 import Indicators from '@/components/dashboard/indicators';
 import RecommendationArticles from '@/components/dashboard/recommendation-articles';
+import ScheduledCard from '@/components/dashboard/ScheduledCard';
 import Treatment from '@/components/dashboard/treatment';
 import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
@@ -48,6 +49,12 @@ const Dashboard: React.FC = () => {
               <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
               <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
               <div className='!w-9 !h-9 rounded-full bg-slate-500'></div>
+            </div>
+            <div className='mt-4 flex flex-col items-center justify-center gap-2'>
+              <ScheduledCard />
+              <ScheduledCard />
+              <ScheduledCard />
+              <ScheduledCard />
             </div>
           </div>
         </div>

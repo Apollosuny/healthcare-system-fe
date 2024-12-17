@@ -33,7 +33,7 @@ const Sidebar: React.FC = () => {
       <div className='mt-10 flex flex-col items-center justify-center gap-8 w-full'>
         <div
           className={classNames(
-            'w-full flex items-center justify-center border-l-4  py-2',
+            'w-full flex items-center justify-center border-l-4 py-2 cursor-pointer',
             pathName === DASHBOARD ? 'border-l-primary' : 'border-none'
           )}
           onClick={() => handleChangePage(DASHBOARD)}
@@ -42,6 +42,7 @@ const Sidebar: React.FC = () => {
             <LayoutDashboard
               size={pathName === DASHBOARD ? 26 : 24}
               stroke={pathName === DASHBOARD ? 'rgb(160 141 235)' : 'black'}
+              className='hover:scale-110 transform transition-transform'
             />
           </div>
         </div>
@@ -53,7 +54,7 @@ const Sidebar: React.FC = () => {
         </div>
         <div
           className={classNames(
-            'w-full flex items-center justify-center border-l-4  py-2',
+            'w-full flex items-center justify-center border-l-4 py-2 cursor-pointer',
             pathName === STATISTIC ? 'border-l-primary' : 'border-none'
           )}
           onClick={() => handleChangePage(STATISTIC)}
@@ -61,6 +62,7 @@ const Sidebar: React.FC = () => {
           <ChartArea
             size={pathName === STATISTIC ? 26 : 24}
             stroke={pathName === STATISTIC ? 'rgb(160 141 235)' : 'black'}
+            className='hover:scale-110 transform transition-transform'
           />
         </div>
         <div className=''>

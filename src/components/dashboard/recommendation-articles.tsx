@@ -4,10 +4,13 @@ const RecommendationArticles: React.FC = () => {
   return (
     <div className='mt-4'>
       <div className='flex items-center justify-between'>
-        <h2 className='text-2xl font-semibold text-black'>Indicators</h2>
+        <h2 className='text-2xl font-semibold text-black'>
+          Recommendation ariticles
+        </h2>
         <p className='text-[#8875e2] text-sm'>See all</p>
       </div>
       <div className='flex items-center gap-x-3 mt-4'>
+        <ArticleCard />
         <ArticleCard />
         <ArticleCard />
       </div>

@@ -4,6 +4,9 @@ const domains = ['localhost'];
 
 const nextConfig: NextConfig = {
   /* config options here */
+  env: {
+    API_BASE_URL: process.env.API_BASE_URL,
+  },
   images: {
     domains: domains,
     remotePatterns: [

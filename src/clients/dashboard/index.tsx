@@ -5,12 +5,13 @@ import Indicators from '@/components/dashboard/indicators';
 import RecommendationArticles from '@/components/dashboard/recommendation-articles';
 import ScheduledCard from '@/components/dashboard/ScheduledCard';
 import Treatment from '@/components/dashboard/treatment';
+import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 
 const Dashboard: React.FC = () => {
-  const [selected, setSelected] = useState<Date>();
+  const [selected, setSelected] = useState<Date>(DateTime.now().toJSDate());
   return (
     <div className='mt-4'>
       <div className='grid grid-cols-3 gap-20'>
@@ -32,6 +33,7 @@ const Dashboard: React.FC = () => {
             selected={selected}
             onSelect={setSelected}
             className='!text-black max-w-xs sm:max-w-md lg:max-w-lg mx-auto'
+            required
             classNames={{
               root: 'flex flex-col items-center',
               table: 'table-fixed',

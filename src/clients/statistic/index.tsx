@@ -1,5 +1,6 @@
 'use client';
 
+import AverageBloodSugar from '@/components/statistic/average-blood-sugar';
 import BMIStatistic from '@/components/statistic/bmi-statistic';
 import Users from '@/components/statistic/users';
 import classNames from 'classnames';
@@ -8,6 +9,7 @@ import { useState } from 'react';
 const TABS = {
   USERS: 0,
   BMI: 1,
+  AVERAGE_BLOOD_SUGAR: 2,
 };
 
 const Statistic: React.FC = () => {
@@ -19,6 +21,8 @@ const Statistic: React.FC = () => {
         return <Users />;
       case TABS.BMI:
         return <BMIStatistic />;
+      case TABS.AVERAGE_BLOOD_SUGAR:
+        return <AverageBloodSugar />;
     }
   };
 
@@ -51,9 +55,17 @@ const Statistic: React.FC = () => {
             BMI
           </div>
         </li>
-        <li className='w-full focus-within:z-10'>
-          <div className='inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 rounded-s-lg hover:bg-gray-50'>
-            Settings
+        <li
+          className='w-full focus-within:z-10'
+          onClick={() => setTab(TABS.AVERAGE_BLOOD_SUGAR)}
+        >
+          <div
+            className={classNames(
+              'inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 hover:bg-gray-50',
+              tab === TABS.AVERAGE_BLOOD_SUGAR && 'active !bg-[#e9d1ff]'
+            )}
+          >
+            Average Blood Sugar
           </div>
         </li>
         <li className='w-full focus-within:z-10'>

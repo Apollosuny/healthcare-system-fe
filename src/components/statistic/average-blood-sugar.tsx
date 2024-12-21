@@ -1,15 +1,17 @@
 /* eslint-disable */
-import { getBMIStatistic } from '@/api/client';
+import { getAverageBloodSugar } from '@/api/client';
 import { useQuery } from '@tanstack/react-query';
 
-const BMIStatistic: React.FC = () => {
+const AverageBloodSugar: React.FC = () => {
   const { data } = useQuery({
-    queryKey: ['bmi'],
-    queryFn: getBMIStatistic,
+    queryKey: ['average-blood-sugar'],
+    queryFn: getAverageBloodSugar,
   });
 
+  console.log(data);
+
   return (
-    <div className=''>
+    <div className='w-full'>
       <div className='relative overflow-x-auto'>
         <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
           <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
@@ -18,16 +20,16 @@ const BMIStatistic: React.FC = () => {
                 id
               </th>
               <th scope='col' className='px-6 py-3'>
-                First Name
+                Full Name
               </th>
               <th scope='col' className='px-6 py-3'>
-                Last Name
+                Average Systolic
               </th>
               <th scope='col' className='px-6 py-3'>
-                BMI
+                Average Diastolic
               </th>
               <th scope='col' className='px-6 py-3'>
-                Type
+                Average Pulse
               </th>
             </tr>
           </thead>
@@ -38,10 +40,10 @@ const BMIStatistic: React.FC = () => {
                 className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'
               >
                 <th className='px-6 py-4'>{item.client_id}</th>
-                <td className='px-6 py-4'>{item.full_name.split(' ')[0]}</td>
-                <td className='px-6 py-4'>{item.full_name.split(' ')[1]}</td>
-                <td className='px-6 py-4'>{item.bmi}</td>
-                <td className='px-6 py-4'>{item.bmi_category}</td>
+                <td className='px-6 py-4'>{item.full_name}</td>
+                <td className='px-6 py-4'>{item.avg_systolic || '-'}</td>
+                <td className='px-6 py-4'>{item.avg_diastolic || '-'}</td>
+                <td className='px-6 py-4'>{item.avg_pulse || '-'}</td>
               </tr>
             ))}
           </tbody>
@@ -51,4 +53,4 @@ const BMIStatistic: React.FC = () => {
   );
 };
 
-export default BMIStatistic;
+export default AverageBloodSugar;

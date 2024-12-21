@@ -1,6 +1,39 @@
+/* eslint-disable */
+'use client';
+import { getClientData } from '@/api/client';
+import { useQuery } from '@tanstack/react-query';
+import { DateTime } from 'luxon';
+import { useState } from 'react';
+import { useDebounce } from 'use-debounce';
+
 const Users: React.FC = () => {
+  const [searchText, setSearchText] = useState<string>('');
+  const debounceText = useDebounce(searchText, 500);
+
+  const handleChangeSearchText = (e: string) => {
+    setSearchText(e);
+  };
+
+  const { data } = useQuery({
+    queryKey: ['client', debounceText],
+    queryFn: () => getClientData(searchText),
+  });
+
   return (
     <div className='w-full'>
+      <div className='my-4'>
+        <div>
+          <input
+            type='text'
+            id=''
+            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            placeholder='Search name here...'
+            required
+            value={searchText}
+            onChange={(e) => handleChangeSearchText(e.target.value)}
+          />
+        </div>
+      </div>
       <div className='relative overflow-x-auto'>
         <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
           <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
@@ -15,38 +48,40 @@ const Users: React.FC = () => {
                 Last Name
               </th>
               <th scope='col' className='px-6 py-3'>
-                Average Systolic
+                Date of Birth
               </th>
               <th scope='col' className='px-6 py-3'>
-                Average Diastolic
+                Gender
               </th>
               <th scope='col' className='px-6 py-3'>
-                Total Steps
+                Address
               </th>
               <th scope='col' className='px-6 py-3'>
-                Total Health Articles Read
+                Height
+              </th>
+              <th scope='col' className='px-6 py-3'>
+                Weight
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-              <th className='px-6 py-4'>12345</th>
-              <td className='px-6 py-4'>Trung</td>
-              <td className='px-6 py-4'>Tran</td>
-              <td className='px-6 py-4'>24.9</td>
-              <td className='px-6 py-4'>30.9</td>
-              <td className='px-6 py-4'>13204</td>
-              <td className='px-6 py-4'>100</td>
-            </tr>
-            <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-              <th className='px-6 py-4'>12345</th>
-              <td className='px-6 py-4'>Trung</td>
-              <td className='px-6 py-4'>Tran</td>
-              <td className='px-6 py-4'>24.9</td>
-              <td className='px-6 py-4'>30.9</td>
-              <td className='px-6 py-4'>13204</td>
-              <td className='px-6 py-4'>100</td>
-            </tr>
+            {(data ?? []).map((item: any) => (
+              <tr
+                key={item.id}
+                className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'
+              >
+                <th className='px-6 py-4'>{item.id}</th>
+                <td className='px-6 py-4'>{item.firstName}</td>
+                <td className='px-6 py-4'>{item.lastName}</td>
+                <td className='px-6 py-4'>
+                  {DateTime.fromISO(item.dob).toFormat('yyyy-MM-dd')}
+                </td>
+                <td className='px-6 py-4'>{item.gender}</td>
+                <td className='px-6 py-4'>{item.address}</td>
+                <td className='px-6 py-4'>{item.height}</td>
+                <td className='px-6 py-4'>{item.weight}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

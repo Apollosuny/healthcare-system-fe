@@ -31,7 +31,7 @@ const Activity: React.FC = () => {
           options={chart.options}
           series={chart.series}
           type='line'
-          width='500'
+          width='400'
         />
       </div>
     </div>

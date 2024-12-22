@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Layout from '@/components/layout';
 import Provider from './provider';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',

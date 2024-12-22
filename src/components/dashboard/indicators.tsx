@@ -1,4 +1,4 @@
-import { Droplet, Heart, Stethoscope } from 'lucide-react';
+import { Droplet, Stethoscope, UserRound } from 'lucide-react';
 
 const Indicators: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const Indicators: React.FC = () => {
       <div className='flex items-center justify-between mt-3 gap-5'>
         <div className='w-full rounded-xl bg-white px-4 py-5 flex items-center gap-3'>
           <div className='p-4 rounded-xl bg-[#fad1d9]'>
-            <Heart size={20} stroke='#fc1f51' fill='#fc1f51' />
+            <UserRound size={20} stroke='#fc1f51' fill='#fc1f51' />
           </div>
           <div className='flex flex-col justify-center items-start'>
             <span className='text-base font-semibold text-black'>6025</span>

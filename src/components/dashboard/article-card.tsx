@@ -1,12 +1,29 @@
 import { Dot } from 'lucide-react';
+import { DateTime } from 'luxon';
 import Image from 'next/image';
 
-const ArticleCard: React.FC = () => {
+type Props = {
+  data: {
+    id: number;
+    title: string;
+    type: string;
+    date: string;
+    banner: string;
+    author: {
+      id: number;
+      name: string;
+      specialty: string;
+      avatar: string;
+    };
+  };
+};
+
+const ArticleCard: React.FC<Props> = ({ data }) => {
   return (
     <div className='bg-white rounded-xl p-4 flex items-center gap-5'>
       <div className=''>
         <Image
-          src='https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+          src={data.banner}
           alt='Article'
           width={80}
           height={80}
@@ -16,22 +33,24 @@ const ArticleCard: React.FC = () => {
       <div className='flex flex-col justify-center items-start gap-y-1'>
         <div className='flex items-center gap-2'>
           <div className='!w-2 !h-2 rounded-full bg-[#fe7c23]' />
-          <p className='text-xs font-medium text-[#c4c4cf]'>Mental Health</p>
+          <p className='text-xs font-medium text-[#c4c4cf]'>{data.type}</p>
         </div>
         <h4 className='text-[#121212] font-semibold line-clamp-2'>
-          Understanding Human Behavior
+          {data.title}
         </h4>
         <div className='flex items-center gap-1'>
           <Image
-            src='https://images.pexels.com/photos/4047077/pexels-photo-4047077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+            src={data.author.avatar}
             alt='Author'
             width={20}
             height={20}
             className='rounded-full !w-5 !h-5 object-cover'
           />
-          <p className='text-sm text-[#c4c4cf]'>John Doe</p>
+          <p className='text-sm text-[#c4c4cf]'>{data.author.name}</p>
           <Dot size={24} stroke='#84849c' />
-          <p className='text-[#c4c4cf] font-medium'>02.12.2024</p>
+          <p className='text-[#c4c4cf] font-medium'>
+            {DateTime.fromISO(data.date).toFormat('yyyy-MM-dd')}
+          </p>
         </div>
       </div>
     </div>

@@ -28,6 +28,7 @@
     "react-day-picker": "^9.4.2",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-hook-form": "^7.54.1",
+    "react-loading-skeleton": "^3.5.0",
     "use-debounce": "^10.0.4",
     "yup": "^1.6.1"
   },

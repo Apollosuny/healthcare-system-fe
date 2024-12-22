@@ -13,8 +13,8 @@ const AverageBloodSugar: React.FC = () => {
   return (
     <div className='w-full'>
       <div className='relative overflow-x-auto'>
-        <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
-          <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+        <table className='w-full text-sm text-left rtl:text-right text-gray-500'>
+          <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
             <tr>
               <th scope='col' className='px-6 py-3'>
                 id
@@ -35,15 +35,12 @@ const AverageBloodSugar: React.FC = () => {
           </thead>
           <tbody>
             {(data ?? []).map((item: any) => (
-              <tr
-                key={item.client_id}
-                className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'
-              >
+              <tr key={item.client_id} className='bg-white border-b'>
                 <th className='px-6 py-4'>{item.client_id}</th>
                 <td className='px-6 py-4'>{item.full_name}</td>
-                <td className='px-6 py-4'>{item.avg_systolic || '-'}</td>
-                <td className='px-6 py-4'>{item.avg_diastolic || '-'}</td>
-                <td className='px-6 py-4'>{item.avg_pulse || '-'}</td>
+                <td className='px-6 py-4'>{item.avg_systolic || '-'} mmHg</td>
+                <td className='px-6 py-4'>{item.avg_diastolic || '-'} mmHg</td>
+                <td className='px-6 py-4'>{item.avg_pulse || '-'} mmHg</td>
               </tr>
             ))}
           </tbody>
